@@ -1,0 +1,17 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    border-top: 1px solid #b4b4b4;
+    padding: 5px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+.items-list {
+    max-height: 65vh;
+    overflow-y: scroll;
+}

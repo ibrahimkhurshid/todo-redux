@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import ItemList from "./ItemList";
+import { useSelector, useDispatch } from "react-redux";
+import { setTodo, resetTodo } from "./TodoSlice";
+import "./css/App.css";
 
-function App() {
+const App = () => {
+  const dispatch = useDispatch();
+  const items = useSelector((state) => state.todo.items);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <div className="header">
+        <div className="title">Todo List</div>
+        <div className="count">{items.length}</div>
+      </div>
+
+      <input
+        type="text"
+        className="task-input"
+        placeholder="Type task...  (Enter / Return)"
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            if (e.target.value !== "") {
+              dispatch(setTodo(e.target.value));
+            } else {
+              alert("Task can't be empty");
+            }
+            e.target.value = "";
+          }
+        }}
+      ></input>
+      <button className="reset-btn" onClick={() => dispatch(resetTodo())}>
+        reset
+      </button>
+      <ItemList items={items} />
     </div>
   );
-}
+};
 
 export default App;
