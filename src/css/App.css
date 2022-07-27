@@ -50,6 +50,12 @@
     width: 100%;
     padding: 20px 0px 20px 0px;
     text-align: center;
+    font-size: 1.2rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.task-input::placeholder {
+    color: rgb(209, 209, 209);
 }
 
 .reset-btn {
